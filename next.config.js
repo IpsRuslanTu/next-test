@@ -1,10 +1,12 @@
 module.exports = {
     images: {
-        localPatterns: [
+        remotePatterns: [
             {
-                pathname: '/assets/**',
-                // search: '',
+                protocol: 'http',
+                hostname: 'localhost',
+                port: '3000',
             },
         ],
+        minimumCacheTTL: 10,
     },
 }

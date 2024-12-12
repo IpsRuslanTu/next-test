@@ -1,21 +1,31 @@
 import styles from "./page.module.css";
 import Image from "next/image";
+import AAaa from "@/app/components/AAaa";
 
-export default function Home() {
+export const revalidate = 3600
 
-  return (
-    <div>
-      <div>
-        Test
-      </div>
+const fetchCategories = async (companyId: string): Promise<any> => {
+  try {
+    const aa = await fetch('google.com')
 
-      <Image
-        src={'/assets/2.jpeg'}
-        alt={'sdf'}
-        width="64"
-        height="64"
-      />
+    return 'succ'
+  } catch (e) {
+    return 'asfsd'
+  }
+}
 
-    </div>
-  );
+export default async function page({searchParams}: {
+  searchParams?: {
+    page?: number
+    limit?: number
+    category?: string
+    sort?: string
+    filter?: string
+  }
+}) {
+
+  const categories = await fetchCategories(searchParams?.filter ?? 'v')
+
+
+  return <AAaa categories={categories} />;
 }
